@@ -6,6 +6,7 @@ use App\Http\Requests\RequestFormEntrer;
 use App\Models\Entrer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MercurySeries\Flashy\Flashy;
 
 class EntrerController extends Controller
 {
@@ -44,6 +45,7 @@ class EntrerController extends Controller
         $entre->fourn_id = request('fourn_id');
         $entre->id_user = Auth::user()->id;
         $entre->save();
+        Flashy::message('Enregistrement effectué avec succès');
         return back();
     }
 

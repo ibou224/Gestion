@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Requests\RequestFormCategorie;
+use MercurySeries\Flashy\Flashy;
 
 
 class CategorieController extends Controller
@@ -26,7 +27,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -38,6 +39,7 @@ class CategorieController extends Controller
     public function store(RequestFormCategorie $request)
     {
         Categorie::create($request->all());
+        Flashy::message('Enregistrement effectué avec succès');
         return back();
     }
 

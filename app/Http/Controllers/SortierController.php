@@ -7,7 +7,7 @@ use App\Models\Produit;
 use App\Models\Sortier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use MercurySeries\Flashy\Flashy;
 class SortierController extends Controller
 {
     /**
@@ -42,7 +42,8 @@ class SortierController extends Controller
 
         $prod = Produit::where('id',$request->id_prod)->first();
         if(request('quantite') > $prod->quantite){
-            dd('la quantite de '.$prod->nomP);
+           // dd('la quantite de '.$prod->nomP);
+            Flashy::info('la quantite de '.$prod->nomP);
         }else{
             $prod->quantite -= request('quantite');
             $prod->update();
@@ -52,6 +53,7 @@ class SortierController extends Controller
             $sortie->id_prod = request('id_prod');
             $sortie->id_user = Auth::user()->id;
             $sortie->save();
+            Flashy::message('Enregistrement effectué avec succès');
             return back();
 
         }

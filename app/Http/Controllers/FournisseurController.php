@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RequestFormFournisseur;
 use App\Models\Fournisseur;
 use Illuminate\Http\Request;
+use MercurySeries\Flashy\Flashy;
 use Illuminate\Support\Facades\Auth;
 
 class FournisseurController extends Controller
@@ -50,6 +51,7 @@ class FournisseurController extends Controller
     {
         $this->AdminAuthCheck();
         Fournisseur::create($request->all());
+        Flashy::message('Enregistrement effectué avec succès');
         return back();
     }
 

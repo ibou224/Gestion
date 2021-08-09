@@ -7,6 +7,7 @@ use App\Models\Produit;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MercurySeries\Flashy\Flashy;
 
 class StockController extends Controller
 {
@@ -48,6 +49,7 @@ class StockController extends Controller
         $stock->id_prod = request('id_prod');
         $stock->id_user = Auth::user()->id;
         $stock->save();
+        Flashy::message('Enregistrement effectué avec succès');
         return back();
 
     }
