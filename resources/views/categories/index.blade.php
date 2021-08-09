@@ -1,37 +1,31 @@
 @extends('layouts.default')
 @section('content')
 <div class="row">
-	<div class="col-md-12">
-        <!-- general form elements -->
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Enregistrement des categories</h3>
-          </div>
-          <!-- /.card-header -->
-          <!-- form start -->
-          <form action="{{route('save-categorie')}} " method="POST">
-          	@csrf
+	<div class="col-md-7">
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Liste des categories</h3>
+            </div>
+            <!-- /.card-header -->
             <div class="card-body">
-              <div class="form-group">
-                <label for="categorie">Categorie</label>
-                <input type="text" class="form-control @error('categorie') is-invalid @enderror" name="categorie" value="{{ old('categorie') }}" placeholder="Saisir une categorie">
-
-                @error('categorie')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-              </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Categorie</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($categories as $cate)
+                <tr>
+                    <td>{{ $cate->categorie }}</td>
+                    <td>X</td>
+                    </tr>
+                @endforeach
+              </table>
             </div>
-            <!-- /.card-body -->
-
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-          </form>
         </div>
-        <!-- /.card -->
-
-      </div>
+    </div>
+    @include('categories.create')
 </div>
 @stop

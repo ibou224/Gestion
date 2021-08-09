@@ -17,7 +17,11 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        return view('categories.index');
+        $categories = Categorie::orderBy('created_at', 'DESC')->get();
+        return view('categories.index',[
+            'categories'=> $categories,
+            'form'=>'regions.create'
+        ]);
     }
 
     /**

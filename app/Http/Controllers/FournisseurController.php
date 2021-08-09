@@ -27,7 +27,8 @@ class FournisseurController extends Controller
      */
     public function index()
     {
-        //
+        $fourns = Fournisseur::all();
+        return view('fournisseurs.index', compact('fourns'));
     }
 
     /**

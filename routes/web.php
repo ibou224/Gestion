@@ -10,10 +10,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ac
 Route::get('categorie','CategorieController@index')->name('categorie');
 Route::post('save-categorie','CategorieController@store')->name('save-categorie');
 
-Route::get('fournisseur','FournisseurController@create')->name('fournisseur');
+Route::get('fournisseur','FournisseurController@index')->name('fournisseur');
+Route::get('create-fourn','FournisseurController@create')->name('create-fourn');
 Route::post('save-fourn','FournisseurController@store')->name('save-fourn');
 
-Route::get('produit','ProduitController@create')->name('produit');
+Route::get('produit','ProduitController@index')->name('produit');
+Route::get('create-prod','ProduitController@create')->name('create-prod');
 Route::post('save-prod','ProduitController@store')->name('save-prod');
 
 Route::get('stock','StockController@create')->name('stock');

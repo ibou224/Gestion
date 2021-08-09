@@ -13,7 +13,7 @@ class Produit extends Model
 
 
     public function cate(){
-    	return $this->belongsTo('App\Models\Categorie','categories_id');
+    	return $this->belongsTo('App\Models\Categorie','id_cat');
     }
     public function fourn(){
     	return $this->belongsTo('App\Models\Fournisseur','fourn_id');
