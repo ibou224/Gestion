@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            
+
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -40,7 +40,8 @@
   </div>
   <!-- /.content-wrapper -->
   @include('layouts.footer')
-
+    <script src="{{ asset('css/jquery.js') }}"></script>
+    @include('flashy::message')
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

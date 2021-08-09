@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RequestFormProduit;
-use App\Models\Produit;
+use App\Http\Requests\RequestFormFournisseur;
+use App\Models\Fournisseur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MercurySeries\Flashy\Flashy;
 
-class ProduitController extends Controller
+class FournisseurController extends Controller
 {
     public function AdminAuthCheck()
     {
@@ -19,6 +18,7 @@ class ProduitController extends Controller
             return redirect('/login')->send();
         }
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +37,7 @@ class ProduitController extends Controller
     public function create()
     {
         $this->AdminAuthCheck();
-        return view('produits.create');
+        return view('fournisseurs.create');
     }
 
     /**
@@ -46,21 +46,20 @@ class ProduitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestFormProduit $request)
+    public function store(RequestFormFournisseur $request)
     {
         $this->AdminAuthCheck();
-        Produit::create($request->all());
-        Flashy::message('Enregistrement effectué avec succès');
+        Fournisseur::create($request->all());
         return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function show(Produit $produit)
+    public function show(Fournisseur $fournisseur)
     {
         //
     }
@@ -68,10 +67,10 @@ class ProduitController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produit $produit)
+    public function edit(Fournisseur $fournisseur)
     {
         //
     }
@@ -80,10 +79,10 @@ class ProduitController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produit $produit)
+    public function update(Request $request, Fournisseur $fournisseur)
     {
         //
     }
@@ -91,10 +90,10 @@ class ProduitController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produit $produit)
+    public function destroy(Fournisseur $fournisseur)
     {
         //
     }

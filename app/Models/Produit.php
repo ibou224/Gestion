@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Produit extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nomP', 'prix','quantite','dateExp','id_cat','fourn_id'];
+
+
+    public function cate(){
+    	return $this->belongsTo('App\Models\Categorie','categories_id');
+    }
+    public function fourn(){
+    	return $this->belongsTo('App\Models\Fournisseur','fourn_id');
+    }
 }

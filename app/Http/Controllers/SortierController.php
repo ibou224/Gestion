@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RequestFormProduit;
+use App\Http\Requests\RequestFormSortier;
 use App\Models\Produit;
+use App\Models\Sortier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MercurySeries\Flashy\Flashy;
 
-class ProduitController extends Controller
+class SortierController extends Controller
 {
-    public function AdminAuthCheck()
-    {
-
-        if(Auth::guard()->check()){
-            return;
-        }else{
-            return redirect('/login')->send();
-        }
-    }
     /**
      * Display a listing of the resource.
      *
@@ -36,8 +27,7 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        $this->AdminAuthCheck();
-        return view('produits.create');
+        return view('sortiers.create');
     }
 
     /**
@@ -46,21 +36,35 @@ class ProduitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestFormProduit $request)
+    public function store(RequestFormSortier $request)
     {
-        $this->AdminAuthCheck();
-        Produit::create($request->all());
-        Flashy::message('Enregistrement effectué avec succès');
-        return back();
+        $sortie = new Sortier();
+
+        $prod = Produit::where('id',$request->id_prod)->first();
+        if(request('quantite') > $prod->quantite){
+            dd('la quantite de '.$prod->nomP);
+        }else{
+            $prod->quantite -= request('quantite');
+            $prod->update();
+
+            $sortie->qty_sortie = request('quantite');
+            $sortie->prix_sortie = request('prix');
+            $sortie->id_prod = request('id_prod');
+            $sortie->id_user = Auth::user()->id;
+            $sortie->save();
+            return back();
+
+        }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Sortier  $sortier
      * @return \Illuminate\Http\Response
      */
-    public function show(Produit $produit)
+    public function show(Sortier $sortier)
     {
         //
     }
@@ -68,10 +72,10 @@ class ProduitController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Sortier  $sortier
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produit $produit)
+    public function edit(Sortier $sortier)
     {
         //
     }
@@ -80,10 +84,10 @@ class ProduitController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Sortier  $sortier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produit $produit)
+    public function update(Request $request, Sortier $sortier)
     {
         //
     }
@@ -91,10 +95,10 @@ class ProduitController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Produit  $produit
+     * @param  \App\Models\Sortier  $sortier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produit $produit)
+    public function destroy(Sortier $sortier)
     {
         //
     }
