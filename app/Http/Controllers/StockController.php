@@ -18,7 +18,8 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        $stocks = Stock::orderBy('created_at','DESC')->get();
+        return view('stocks.index', compact('stocks'));
     }
 
     /**

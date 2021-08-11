@@ -18,7 +18,9 @@ Route::get('produit','ProduitController@index')->name('produit');
 Route::get('create-prod','ProduitController@create')->name('create-prod');
 Route::post('save-prod','ProduitController@store')->name('save-prod');
 
-Route::get('stock','StockController@create')->name('stock');
+
+Route::get('stock','StockController@index')->name('stock');
+Route::get('create-stock','StockController@create')->name('create-stock');
 Route::post('save-stock','StockController@store')->name('save-stock');
 
 Route::get('entrer','EntrerController@create')->name('entrer');
