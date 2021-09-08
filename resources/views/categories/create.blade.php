@@ -1,7 +1,7 @@
 <div class="col-md-4">
     <!-- general form elements -->
-    <div class="card card-primary">
-        <div class="card-header">
+    <div class="card">
+        <div class="card-header bg-gradient-primary">
         <h3 class="card-title">Enregistrement des categories</h3>
         </div>
         <!-- /.card-header -->

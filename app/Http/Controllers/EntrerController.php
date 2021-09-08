@@ -10,6 +10,11 @@ use MercurySeries\Flashy\Flashy;
 
 class EntrerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,8 @@ class EntrerController extends Controller
      */
     public function index()
     {
-        //
+        $entrers = Entrer::all();
+        return view('entrers.index', compact('entrers'));
     }
 
     /**

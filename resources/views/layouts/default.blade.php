@@ -7,6 +7,7 @@
 
   <!-- Google Font: Source Sans Pro -->
   @include('layouts.links')
+  @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -39,6 +40,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
   @include('layouts.footer')
     <script src="{{ asset('css/jquery.js') }}"></script>
     @include('flashy::message')
@@ -51,5 +53,6 @@
 <!-- ./wrapper -->
 
 @include('layouts.script')
+@livewireScripts
 </body>
 </html>

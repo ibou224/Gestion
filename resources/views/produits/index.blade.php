@@ -3,10 +3,10 @@
 <div class="row">
 	<div class="col-md-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gradient-primary">
               <h3 class="card-title">Liste des produits</h3>
-                <a href="{{ route('create-prod') }}" class="btn btn-primary float-rigth m-2">
-                    <i class="fas fa-plus">Ajouter</i>
+                <a href="{{ route('create-prod') }}" class="btn bg-gradient-success float-right">
+                    <i class="fas fa-check"></i> Ajouter
                 </a>
             </div>
             <!-- /.card-header -->

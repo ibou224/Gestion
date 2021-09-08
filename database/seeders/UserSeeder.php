@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $user = [
 
             [
-                'nom'=>'Admin',
+                'nom'=>'SuperAdmin',
                 'prenom'=>'Administrateur',
                 'phone'=>'622 22 22 22',
                 'email'=>'admin@gmail.com',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'nom'=>'Gerant',
-                'prenom'=>'Gerant',
+                'prenom'=>'User Gerant',
                 'phone'=>'622 22 22 22',
                 'email'=>'gerant@gmail.com',
                 'password'=>bcrypt('12345678'),

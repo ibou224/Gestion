@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RequestFormSortier;
+use App\Models\Client;
 use App\Models\Produit;
 use App\Models\Sortier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use MercurySeries\Flashy\Flashy;
 class SortierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,25 @@ class SortierController extends Controller
      */
     public function index()
     {
-        //
+        $sorties = Sortier::all();
+        $clients = Client::all();
+        return view('sortiers.index', compact('sorties','clients'));
+    }
+
+    public function show_vente($id)
+    {
+        $clt = Client::where('id',$id)->first();
+        $show = DB::table('detaille_commande')
+            ->where('id_clt',$id)->get();
+        return view('sortiers.show_vente', compact('show','clt'));
+    }
+
+    public function show_print($id)
+    {
+        $clt = Client::where('id',$id)->first();
+        $show = DB::table('detaille_commande')
+            ->where('id_clt',$id)->get();
+        return view('sortiers.print', compact('show','clt'));
     }
 
     /**

@@ -7,6 +7,7 @@
 
   <!-- Google Font: Source Sans Pro -->
   @include('layouts.links')
+  @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -56,6 +57,7 @@
 </div>
 <!-- ./wrapper -->
 
-@include('layouts.script')
+    @include('layouts.script')
+    @livewireScripts
 </body>
 </html>

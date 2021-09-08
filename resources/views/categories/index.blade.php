@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-7">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gradient-primary">
               <h3 class="card-title">Liste des categories</h3>
             </div>
             <!-- /.card-header -->
